@@ -27,7 +27,6 @@ OpenStack library for creating Guru Meditation Reports and other reports.
 
 %package doc
 Summary:    Documentation for OpenStack common messaging library
-Group:      Documentation
 
 BuildRequires: python-sphinx
 BuildRequires: python-oslo-sphinx >= 2.5.0
