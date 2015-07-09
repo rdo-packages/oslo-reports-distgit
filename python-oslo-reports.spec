@@ -56,7 +56,6 @@ rm -rf html/.{doctrees,buildinfo}
 %doc README.rst
 %{python2_sitelib}/oslo_reports
 %{python2_sitelib}/ 
-%{python2_sitelib}/%{pypi_name}-%{version}-py?.?-*.pth
 %{python2_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
 
 %files doc
