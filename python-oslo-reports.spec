@@ -1,5 +1,7 @@
 %global pypi_name oslo.reports
 
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+
 Name:           python-oslo-reports
 Version:        XXX
 Release:        XXX
@@ -10,7 +12,7 @@ URL:            http://launchpad.net/oslo
 Source0:        http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-master.tar.gz
 
 BuildArch:      noarch
- 
+
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
 BuildRequires:  python-sphinx
@@ -63,9 +65,11 @@ rm -rf html/.{doctrees,buildinfo}
 %license LICENSE
 %doc README.rst
 %{python2_sitelib}/oslo_reports
-%{python2_sitelib}/ 
+%{python2_sitelib}/
 %{python2_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
 
 %files doc
 %license LICENSE
 %doc html
+
+%changelog
