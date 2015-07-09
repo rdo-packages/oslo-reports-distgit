@@ -15,6 +15,14 @@ BuildRequires:  python2-devel
 BuildRequires:  python-pbr
 BuildRequires:  python-sphinx
 
+Requires:       python-jinja2
+Requires:       python-babel
+Requires:       python-oslo-i18n >= 1.5.0
+Requires:       python-oslo-serialization >= 1.4.0
+Requires:       python-oslo-utils >= 1.6.0
+Requires:       python-psutil
+Requires:       python-six >= 1.9.0
+
 
 %description
 The Oslo project intends to produce a python library containing
