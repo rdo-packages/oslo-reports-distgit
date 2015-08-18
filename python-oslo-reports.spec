@@ -3,13 +3,13 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-oslo-reports
-Version:        XXX
-Release:        XXX
+Version:        0.4.0
+Release:        1%{?dist}
 Summary:        Openstack common reports library
 
 License:        ASL 2.0
 URL:            http://launchpad.net/oslo
-Source0:        http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-master.tar.gz
+Source0:        https://pypi.python.org/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildArch:      noarch
 
@@ -65,10 +65,12 @@ rm -rf html/.{doctrees,buildinfo}
 %license LICENSE
 %doc README.rst
 %{python2_sitelib}/oslo_reports
-%{python2_sitelib}/
+%{python2_sitelib}/*.egg-info
 
 %files doc
 %license LICENSE
 %doc html
 
 %changelog
+* Tue Aug 18 2015 Alan Pevec <alan.pevec@redhat.com> 0.4.0-1
+- Update to upstream 0.4.0
