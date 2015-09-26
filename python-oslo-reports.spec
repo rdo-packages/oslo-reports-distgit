@@ -15,13 +15,15 @@ BuildArch:      noarch
 
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
+# Requuired for documentation build
 BuildRequires:  python-sphinx
+BuildRequires:  python-oslo-config
 
 Requires:       python-jinja2
 Requires:       python-babel
 Requires:       python-oslo-i18n >= 1.5.0
 Requires:       python-oslo-serialization >= 1.4.0
-Requires:       python-oslo-utils >= 1.6.0
+Requires:       python-oslo-utils >= 2.0.0
 Requires:       python-psutil
 Requires:       python-six >= 1.9.0
 
