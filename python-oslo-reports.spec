@@ -1,8 +1,13 @@
 %global pypi_name oslo.reports
+%global pkg_name oslo-reports
+
+%if 0%{?fedora} >= 24
+%global with_python3 1
+%endif
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
-Name:           python-oslo-reports
+Name:           python-%{pkg_name}
 Version:        XXX
 Release:        XXX
 Summary:        Openstack common reports library
@@ -13,11 +18,30 @@ Source0:        http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-master.t
 
 BuildArch:      noarch
 
+%description
+The Oslo project intends to produce a python library containing
+infrastructure code shared by OpenStack projects. The APIs provided
+by the project should be high quality, stable, consistent and generally
+useful.
+
+OpenStack library for creating Guru Meditation Reports and other reports.
+
+%package -n python2-%{pkg_name}
+Summary:   OpenStack common reports library
+%{?python_provide:%python_provide python2-%{pkg_name}}
+
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
-# Requuired for documentation build
-BuildRequires:  python-sphinx
+# test requirements
+BuildRequires:  python-hacking
+BuildRequires:  python-oslotest
 BuildRequires:  python-oslo-config
+BuildRequires:  python-eventlet
+BuildRequires:  python-greenlet
+BuildRequires:  python-coverage
+BuildRequires:  python-oslo-utils
+BuildRequires:  python-oslo-serialization
+Buildrequires:  python-psutil
 
 Requires:       python-jinja2
 Requires:       python-babel
@@ -27,8 +51,7 @@ Requires:       python-oslo-utils >= 2.0.0
 Requires:       python-psutil
 Requires:       python-six >= 1.9.0
 
-
-%description
+%description -n python2-%{pkg_name}
 The Oslo project intends to produce a python library containing
 infrastructure code shared by OpenStack projects. The APIs provided
 by the project should be high quality, stable, consistent and generally
@@ -36,41 +59,118 @@ useful.
 
 OpenStack library for creating Guru Meditation Reports and other reports.
 
-
-%package doc
-Summary:    Documentation for OpenStack common messaging library
+%package -n python-%{pkg_name}-doc
+Summary:    Documentation for OpenStack common reports library
 
 BuildRequires: python-sphinx
 BuildRequires: python-oslo-sphinx >= 2.5.0
 
 
-%description doc
-Documentation for the oslo.messaging library.
+%description -n python-%{pkg_name}-doc
+Documentation for the oslo.reports library.
+
+%package -n python-%{pkg_name}-tests
+Summary:  Test module for OpenStack common reports library
+
+Requires:  python-%{pkg_name} = %{version}-%{release}
+Requires:  python-hacking
+Requires:  python-oslotest
+Requires:  python-oslo-config
+Requires:  python-eventlet
+Requires:  python-greenlet
+Requires:  python-coverage
+
+%description -n python-%{pkg_name}-tests
+Test module for OpenStack common reports library
+
+%if 0%{?with_python3}
+%package -n python3-%{pkg_name}
+Summary:        OpenStack oslo.reports library
+%{?python_provide:%python_provide python3-%{pkg_name}}
+
+BuildRequires:  python3-devel
+BuildRequires:  python3-pbr
+# test requirements
+BuildRequires:  python3-hacking
+BuildRequires:  python3-oslotest
+BuildRequires:  python3-oslo-config
+BuildRequires:  python3-eventlet
+BuildRequires:  python3-greenlet
+BuildRequires:  python3-coverage
+BuildRequires:  python3-oslo-utils
+BuildRequires:  python3-oslo-serialization
+Buildrequires:  python3-psutil
+
+Requires:       python3-jinja2
+Requires:       python3-babel
+Requires:       python3-oslo-i18n >= 1.5.0
+Requires:       python3-oslo-serialization >= 1.4.0
+Requires:       python3-oslo-utils >= 2.0.0
+Requires:       python3-psutil
+Requires:       python3-six >= 1.9.0
+
+%description -n python3-%{pkg_name}
+The Oslo project intends to produce a python library containing
+infrastructure code shared by OpenStack projects. The APIs provided
+by the project should be high quality, stable, consistent and generally
+useful.
+
+OpenStack library for creating Guru Meditation Reports and other reports.
+%endif
 
 %prep
 %setup -q -n %{pypi_name}-%{upstream_version}
 
+# Let RPM handle the dependencies
+rm -f requirements.txt
+
 %build
-%{__python2} setup.py build
+%py2_build
 
 # generate html docs
 sphinx-build doc/source html
 # remove the sphinx-build leftovers
 rm -rf html/.{doctrees,buildinfo}
 
+%if 0%{?with_python3}
+%py3_build
+%endif
+
 %install
-%{__python2} setup.py install --skip-build --root %{buildroot}
+%py2_install
+
+%if 0%{?with_python3}
+%py3_install
+%endif
 
 %check
+%{__python2} setup.py test
+%if 0%{?with_python3}
+rm -rf .testrepository
+%{__python3} setup.py test
+%endif
 
-%files
+%files -n python2-%{pkg_name}
 %license LICENSE
 %doc README.rst
 %{python2_sitelib}/oslo_reports
-%{python2_sitelib}/
+%{python2_sitelib}/*.egg-info
+%exclude %{python2_sitelib}/oslo_reports/tests
 
-%files doc
+%if 0%{?with_python3}
+%files -n python3-%{pkg_name}
+%license LICENSE
+%doc README.rst
+%{python3_sitelib}/oslo_reports
+%{python3_sitelib}/*.egg-info
+%exclude %{python3_sitelib}/oslo_reports/tests
+%endif
+
+%files -n python-%{pkg_name}-doc
 %license LICENSE
 %doc html
+
+%files -n python-%{pkg_name}-tests
+%{python2_sitelib}/oslo_reports/tests
 
 %changelog
