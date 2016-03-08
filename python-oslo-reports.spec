@@ -41,7 +41,7 @@ BuildRequires:  python-greenlet
 BuildRequires:  python-coverage
 BuildRequires:  python-oslo-utils
 BuildRequires:  python-oslo-serialization
-Buildrequires:  python-psutil
+BuildRequires:  python-psutil
 
 Requires:       python-jinja2
 Requires:       python-babel
@@ -99,7 +99,7 @@ BuildRequires:  python3-greenlet
 BuildRequires:  python3-coverage
 BuildRequires:  python3-oslo-utils
 BuildRequires:  python3-oslo-serialization
-Buildrequires:  python3-psutil
+BuildRequires:  python3-psutil
 
 Requires:       python3-jinja2
 Requires:       python3-babel
