@@ -8,13 +8,13 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-%{pkg_name}
-Version:        XXX
-Release:        XXX
+Version:        1.6.0
+Release:        1%{?dist}
 Summary:        Openstack common reports library
 
 License:        ASL 2.0
 URL:            http://launchpad.net/oslo
-Source0:        http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-master.tar.gz
+Source0:        http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 
 BuildArch:      noarch
 
@@ -174,3 +174,6 @@ rm -rf .testrepository
 %{python2_sitelib}/oslo_reports/tests
 
 %changelog
+* Wed Mar 23 2016 Haikel Guemar <hguemar@fedoraproject.org> 1.6.0-
+- Update to 1.6.0
+
