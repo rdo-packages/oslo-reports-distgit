@@ -9,7 +9,7 @@
 
 Name:           python-%{pkg_name}
 Version:        1.6.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Openstack common reports library
 
 License:        ASL 2.0
@@ -118,6 +118,22 @@ useful.
 OpenStack library for creating Guru Meditation Reports and other reports.
 %endif
 
+%if 0%{?with_python3}
+%package -n python3-%{pkg_name}-tests
+Summary:  Test module for OpenStack common reports library
+
+Requires:  python3-%{pkg_name} = %{version}-%{release}
+Requires:  python3-hacking
+Requires:  python3-oslotest
+Requires:  python3-oslo-config
+Requires:  python3-eventlet
+Requires:  python3-greenlet
+Requires:  python3-coverage
+
+%description -n python3-%{pkg_name}-tests
+Test module for OpenStack common reports library
+%endif
+
 %prep
 %setup -q -n %{pypi_name}-%{upstream_version}
 
@@ -173,7 +189,15 @@ rm -rf .testrepository
 %files -n python-%{pkg_name}-tests
 %{python2_sitelib}/oslo_reports/tests
 
+%if 0%{?with_python3}
+%files -n python3-%{pkg_name}-tests
+%{python3_sitelib}/oslo_reports/tests
+%endif
+
 %changelog
-* Wed Mar 23 2016 Haikel Guemar <hguemar@fedoraproject.org> 1.6.0-
+* Fri Jun 03 2016 Charalampos Stratakis <cstratak@redhat.com> 1.6.0-2
+- Provide a python 3 tests subpackage
+
+* Wed Mar 23 2016 Haikel Guemar <hguemar@fedoraproject.org> 1.6.0-1
 - Update to 1.6.0
 
