@@ -8,8 +8,8 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-%{pkg_name}
-Version:        1.6.0
-Release:        2%{?dist}
+Version:        1.7.0
+Release:        1%{?dist}
 Summary:        Openstack common reports library
 
 License:        ASL 2.0
@@ -195,6 +195,9 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Thu Sep 08 2016 Haikel Guemar <hguemar@fedoraproject.org> 1.7.0-1
+- Update to 1.7.0
+
 * Fri Jun 03 2016 Charalampos Stratakis <cstratak@redhat.com> 1.6.0-2
 - Provide a python 3 tests subpackage
 
