@@ -8,8 +8,8 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-%{pkg_name}
-Version:        XXX
-Release:        XXX
+Version:        1.17.0
+Release:        1%{?dist}
 Summary:        Openstack common reports library
 
 License:        ASL 2.0
@@ -195,3 +195,6 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Wed Feb 08 2017 Alfredo Moralejo <amoralej@redhat.com> 1.17.0-1
+- Update to 1.17.0
+
