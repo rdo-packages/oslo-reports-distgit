@@ -32,6 +32,7 @@ Summary:   OpenStack common reports library
 
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
+BuildRequires:  git
 # test requirements
 BuildRequires:  python-hacking
 BuildRequires:  python-oslotest
@@ -63,7 +64,7 @@ OpenStack library for creating Guru Meditation Reports and other reports.
 Summary:    Documentation for OpenStack common reports library
 
 BuildRequires: python-sphinx
-BuildRequires: python-oslo-sphinx >= 2.5.0
+BuildRequires: python-openstackdocstheme
 
 
 %description -n python-%{pkg_name}-doc
@@ -135,7 +136,7 @@ Test module for OpenStack common reports library
 %endif
 
 %prep
-%setup -q -n %{pypi_name}-%{upstream_version}
+%autosetup -n %{pypi_name}-%{upstream_version} -S git
 
 # Let RPM handle the dependencies
 rm -f requirements.txt
@@ -144,9 +145,9 @@ rm -f requirements.txt
 %py2_build
 
 # generate html docs
-sphinx-build doc/source html
+%{__python2} setup.py build_sphinx -b html
 # remove the sphinx-build leftovers
-rm -rf html/.{doctrees,buildinfo}
+rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %if 0%{?with_python3}
 %py3_build
@@ -184,7 +185,7 @@ rm -rf .testrepository
 
 %files -n python-%{pkg_name}-doc
 %license LICENSE
-%doc html
+%doc doc/build/html
 
 %files -n python-%{pkg_name}-tests
 %{python2_sitelib}/oslo_reports/tests
