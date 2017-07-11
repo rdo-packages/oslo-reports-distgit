@@ -8,7 +8,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-%{pkg_name}
-Version:        1.17.0
+Version:        1.17.1
 Release:        1%{?dist}
 Summary:        Openstack common reports library
 
@@ -195,6 +195,9 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Tue Jul 11 2017 rdo-trunk <javier.pena@redhat.com> 1.17.1-1
+- Update to 1.17.1
+
 * Wed Feb 08 2017 Alfredo Moralejo <amoralej@redhat.com> 1.17.0-1
 - Update to 1.17.0
 
