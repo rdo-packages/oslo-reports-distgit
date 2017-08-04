@@ -46,9 +46,9 @@ BuildRequires:  python-psutil
 
 Requires:       python-jinja2
 Requires:       python-babel
-Requires:       python-oslo-i18n >= 1.5.0
-Requires:       python-oslo-serialization >= 1.4.0
-Requires:       python-oslo-utils >= 2.0.0
+Requires:       python-oslo-i18n >= 2.1.0
+Requires:       python-oslo-serialization >= 1.10.0
+Requires:       python-oslo-utils >= 3.20.0
 Requires:       python-psutil
 Requires:       python-six >= 1.9.0
 
@@ -104,9 +104,9 @@ BuildRequires:  python3-psutil
 
 Requires:       python3-jinja2
 Requires:       python3-babel
-Requires:       python3-oslo-i18n >= 1.5.0
-Requires:       python3-oslo-serialization >= 1.4.0
-Requires:       python3-oslo-utils >= 2.0.0
+Requires:       python3-oslo-i18n >= 2.1.0
+Requires:       python3-oslo-serialization >= 1.10.0
+Requires:       python3-oslo-utils >= 3.20.0
 Requires:       python3-psutil
 Requires:       python3-six >= 1.9.0
 
