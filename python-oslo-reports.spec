@@ -39,7 +39,6 @@ BuildRequires:  python-oslotest
 BuildRequires:  python-oslo-config
 BuildRequires:  python-eventlet
 BuildRequires:  python-greenlet
-BuildRequires:  python-coverage
 BuildRequires:  python-oslo-utils
 BuildRequires:  python-oslo-serialization
 BuildRequires:  python-psutil
@@ -79,7 +78,6 @@ Requires:  python-oslotest
 Requires:  python-oslo-config
 Requires:  python-eventlet
 Requires:  python-greenlet
-Requires:  python-coverage
 
 %description -n python-%{pkg_name}-tests
 Test module for OpenStack common reports library
@@ -97,7 +95,6 @@ BuildRequires:  python3-oslotest
 BuildRequires:  python3-oslo-config
 BuildRequires:  python3-eventlet
 BuildRequires:  python3-greenlet
-BuildRequires:  python3-coverage
 BuildRequires:  python3-oslo-utils
 BuildRequires:  python3-oslo-serialization
 BuildRequires:  python3-psutil
@@ -129,7 +126,6 @@ Requires:  python3-oslotest
 Requires:  python3-oslo-config
 Requires:  python3-eventlet
 Requires:  python3-greenlet
-Requires:  python3-coverage
 
 %description -n python3-%{pkg_name}-tests
 Test module for OpenStack common reports library
