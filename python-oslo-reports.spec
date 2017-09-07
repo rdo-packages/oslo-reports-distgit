@@ -7,6 +7,17 @@
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
+%global common_desc \
+The Oslo project intends to produce a python library containing \
+infrastructure code shared by OpenStack projects. The APIs provided \
+by the project should be high quality, stable, consistent and generally \
+useful. \
+\
+OpenStack library for creating Guru Meditation Reports and other reports.
+
+%global common_desc2 \
+Test module for OpenStack common reports library
+
 Name:           python-%{pkg_name}
 Version:        XXX
 Release:        XXX
@@ -19,12 +30,7 @@ Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstr
 BuildArch:      noarch
 
 %description
-The Oslo project intends to produce a python library containing
-infrastructure code shared by OpenStack projects. The APIs provided
-by the project should be high quality, stable, consistent and generally
-useful.
-
-OpenStack library for creating Guru Meditation Reports and other reports.
+%{common_desc}
 
 %package -n python2-%{pkg_name}
 Summary:   OpenStack common reports library
@@ -52,12 +58,7 @@ Requires:       python-psutil
 Requires:       python-six >= 1.9.0
 
 %description -n python2-%{pkg_name}
-The Oslo project intends to produce a python library containing
-infrastructure code shared by OpenStack projects. The APIs provided
-by the project should be high quality, stable, consistent and generally
-useful.
-
-OpenStack library for creating Guru Meditation Reports and other reports.
+%{common_desc}
 
 %package -n python-%{pkg_name}-doc
 Summary:    Documentation for OpenStack common reports library
@@ -80,7 +81,7 @@ Requires:  python-eventlet
 Requires:  python-greenlet
 
 %description -n python-%{pkg_name}-tests
-Test module for OpenStack common reports library
+%{common_desc2}
 
 %if 0%{?with_python3}
 %package -n python3-%{pkg_name}
@@ -108,12 +109,7 @@ Requires:       python3-psutil
 Requires:       python3-six >= 1.9.0
 
 %description -n python3-%{pkg_name}
-The Oslo project intends to produce a python library containing
-infrastructure code shared by OpenStack projects. The APIs provided
-by the project should be high quality, stable, consistent and generally
-useful.
-
-OpenStack library for creating Guru Meditation Reports and other reports.
+%{common_desc}
 %endif
 
 %if 0%{?with_python3}
@@ -128,7 +124,7 @@ Requires:  python3-eventlet
 Requires:  python3-greenlet
 
 %description -n python3-%{pkg_name}-tests
-Test module for OpenStack common reports library
+%{common_desc2}
 %endif
 
 %prep
