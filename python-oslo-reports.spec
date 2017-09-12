@@ -4,6 +4,7 @@
 %if 0%{?fedora} >= 24
 %global with_python3 1
 %endif
+%global with_doc 1
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -61,6 +62,7 @@ Requires:       python2-six >= 1.10.0
 %description -n python2-%{pkg_name}
 %{common_desc}
 
+%if 0%{?with_doc}
 %package -n python-%{pkg_name}-doc
 Summary:    Documentation for OpenStack common reports library
 
@@ -70,6 +72,7 @@ BuildRequires: python2-openstackdocstheme
 
 %description -n python-%{pkg_name}-doc
 Documentation for the oslo.reports library.
+%endif
 
 %package -n python2-%{pkg_name}-tests
 Summary:  Test module for OpenStack common reports library
@@ -137,10 +140,12 @@ Requires:  python3-greenlet
 %build
 %py2_build
 
+%if 0%{?with_doc}
 # generate html docs
 %{__python2} setup.py build_sphinx -b html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
+%endif
 
 %if 0%{?with_python3}
 %py3_build
@@ -176,9 +181,11 @@ rm -rf .testrepository
 %exclude %{python3_sitelib}/oslo_reports/tests
 %endif
 
+%if 0%{?with_doc}
 %files -n python-%{pkg_name}-doc
 %license LICENSE
 %doc doc/build/html
+%endif
 
 %files -n python2-%{pkg_name}-tests
 %{python2_sitelib}/oslo_reports/tests
