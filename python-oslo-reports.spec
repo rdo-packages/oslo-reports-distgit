@@ -99,6 +99,7 @@ BuildRequires:  python3-greenlet
 BuildRequires:  python3-oslo-utils
 BuildRequires:  python3-oslo-serialization
 BuildRequires:  python3-psutil
+BuildRequires:  openstack-macros
 
 Requires:       python3-jinja2
 Requires:       python3-babel
@@ -131,7 +132,7 @@ Requires:  python3-greenlet
 %autosetup -n %{pypi_name}-%{upstream_version} -S git
 
 # Let RPM handle the dependencies
-rm -f requirements.txt
+%py_req_cleanup
 
 %build
 %py2_build
