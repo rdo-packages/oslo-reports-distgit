@@ -29,6 +29,9 @@ Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstr
 
 BuildArch:      noarch
 
+BuildRequires:  git
+BuildRequires:  openstack-macros
+
 %description
 %{common_desc}
 
@@ -38,7 +41,6 @@ Summary:   OpenStack common reports library
 
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
-BuildRequires:  git
 # test requirements
 BuildRequires:  python-hacking
 BuildRequires:  python-oslotest
@@ -99,7 +101,6 @@ BuildRequires:  python3-greenlet
 BuildRequires:  python3-oslo-utils
 BuildRequires:  python3-oslo-serialization
 BuildRequires:  python3-psutil
-BuildRequires:  openstack-macros
 
 Requires:       python3-jinja2
 Requires:       python3-babel
