@@ -40,24 +40,23 @@ Summary:   OpenStack common reports library
 %{?python_provide:%python_provide python2-%{pkg_name}}
 
 BuildRequires:  python2-devel
-BuildRequires:  python-pbr
+BuildRequires:  python2-pbr
 # test requirements
-BuildRequires:  python-hacking
-BuildRequires:  python-oslotest
-BuildRequires:  python-oslo-config
-BuildRequires:  python-eventlet
-BuildRequires:  python-greenlet
-BuildRequires:  python-oslo-utils
-BuildRequires:  python-oslo-serialization
-BuildRequires:  python-psutil
+BuildRequires:  python2-hacking
+BuildRequires:  python2-oslotest
+BuildRequires:  python2-oslo-config
+BuildRequires:  python2-eventlet
+BuildRequires:  python2-greenlet
+BuildRequires:  python2-oslo-utils
+BuildRequires:  python2-oslo-serialization
+BuildRequires:  python2-psutil
 
-Requires:       python-jinja2
-Requires:       python-babel
-Requires:       python-oslo-i18n >= 2.1.0
-Requires:       python-oslo-serialization >= 1.10.0
-Requires:       python-oslo-utils >= 3.20.0
-Requires:       python-psutil
-Requires:       python-six >= 1.9.0
+Requires:       python2-jinja2
+Requires:       python2-oslo-i18n >= 3.15.3
+Requires:       python2-oslo-serialization >= 2.18.0
+Requires:       python2-oslo-utils >= 3.33.0
+Requires:       python2-psutil
+Requires:       python2-six >= 1.10.0
 
 %description -n python2-%{pkg_name}
 %{common_desc}
@@ -65,24 +64,25 @@ Requires:       python-six >= 1.9.0
 %package -n python-%{pkg_name}-doc
 Summary:    Documentation for OpenStack common reports library
 
-BuildRequires: python-sphinx
-BuildRequires: python-openstackdocstheme
+BuildRequires: python2-sphinx
+BuildRequires: python2-openstackdocstheme
 
 
 %description -n python-%{pkg_name}-doc
 Documentation for the oslo.reports library.
 
-%package -n python-%{pkg_name}-tests
+%package -n python2-%{pkg_name}-tests
 Summary:  Test module for OpenStack common reports library
+%{?python_provide:%python_provide python2-%{pkg_name}-tests}
 
-Requires:  python-%{pkg_name} = %{version}-%{release}
-Requires:  python-hacking
-Requires:  python-oslotest
-Requires:  python-oslo-config
-Requires:  python-eventlet
-Requires:  python-greenlet
+Requires:  python2-%{pkg_name} = %{version}-%{release}
+Requires:  python2-hacking
+Requires:  python2-oslotest
+Requires:  python2-oslo-config
+Requires:  python2-eventlet
+Requires:  python2-greenlet
 
-%description -n python-%{pkg_name}-tests
+%description -n python2-%{pkg_name}-tests
 %{common_desc2}
 
 %if 0%{?with_python3}
@@ -103,12 +103,11 @@ BuildRequires:  python3-oslo-serialization
 BuildRequires:  python3-psutil
 
 Requires:       python3-jinja2
-Requires:       python3-babel
-Requires:       python3-oslo-i18n >= 2.1.0
-Requires:       python3-oslo-serialization >= 1.10.0
-Requires:       python3-oslo-utils >= 3.20.0
+Requires:       python3-oslo-i18n >= 3.15.3
+Requires:       python3-oslo-serialization >= 2.18.0
+Requires:       python3-oslo-utils >= 3.33.0
 Requires:       python3-psutil
-Requires:       python3-six >= 1.9.0
+Requires:       python3-six >= 1.10.0
 
 %description -n python3-%{pkg_name}
 %{common_desc}
@@ -181,7 +180,7 @@ rm -rf .testrepository
 %license LICENSE
 %doc doc/build/html
 
-%files -n python-%{pkg_name}-tests
+%files -n python2-%{pkg_name}-tests
 %{python2_sitelib}/oslo_reports/tests
 
 %if 0%{?with_python3}
