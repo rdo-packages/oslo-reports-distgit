@@ -19,8 +19,8 @@ OpenStack library for creating Guru Meditation Reports and other reports.
 Test module for OpenStack common reports library
 
 Name:           python-%{pkg_name}
-Version:        XXX
-Release:        XXX
+Version:        1.26.0
+Release:        1%{?dist}
 Summary:        Openstack common reports library
 
 License:        ASL 2.0
@@ -189,3 +189,6 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Sat Feb 10 2018 RDO <dev@lists.rdoproject.org> 1.26.0-1
+- Update to 1.26.0
+
