@@ -5,6 +5,9 @@
 %global with_python3 1
 %endif
 
+# FIXME(ykarel) Until https://review.openstack.org/#/c/588088/ lands in rocky
+%global with_tests 0
+
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 %global common_desc \
@@ -19,8 +22,8 @@ OpenStack library for creating Guru Meditation Reports and other reports.
 Test module for OpenStack common reports library
 
 Name:           python-%{pkg_name}
-Version:        XXX
-Release:        XXX
+Version:        1.28.0
+Release:        1%{?dist}
 Summary:        Openstack common reports library
 
 License:        ASL 2.0
@@ -154,10 +157,12 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 %check
+%if 0%{?with_tests}
 %{__python2} setup.py test
 %if 0%{?with_python3}
 rm -rf .testrepository
 %{__python3} setup.py test
+%endif
 %endif
 
 %files -n python2-%{pkg_name}
@@ -189,3 +194,6 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Tue Aug 07 2018 RDO <dev@lists.rdoproject.org> 1.28.0-1
+- Update to 1.28.0
+
