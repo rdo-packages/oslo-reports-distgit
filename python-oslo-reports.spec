@@ -13,6 +13,7 @@
 %global pkg_name oslo-reports
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+%global with_doc 1
 
 %global common_desc \
 The Oslo project intends to produce a python library containing \
@@ -68,15 +69,16 @@ Requires:       python%{pyver}-six >= 1.10.0
 %description -n python%{pyver}-%{pkg_name}
 %{common_desc}
 
+%if 0%{?with_doc}
 %package -n python-%{pkg_name}-doc
 Summary:    Documentation for OpenStack common reports library
 
 BuildRequires: python%{pyver}-sphinx
 BuildRequires: python%{pyver}-openstackdocstheme
 
-
 %description -n python-%{pkg_name}-doc
 Documentation for the oslo.reports library.
+%endif
 
 %package -n python%{pyver}-%{pkg_name}-tests
 Summary:  Test module for OpenStack common reports library
@@ -101,10 +103,12 @@ Requires:  python%{pyver}-greenlet
 %build
 %{pyver_build}
 
+%if 0%{?with_doc}
 # generate html docs
 %{pyver_bin} setup.py build_sphinx -b html
 # remove the sphinx-build-%{pyver} leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
+%endif
 
 %install
 %{pyver_install}
@@ -121,9 +125,11 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{pyver_sitelib}/*.egg-info
 %exclude %{pyver_sitelib}/oslo_reports/tests
 
+%if 0%{?with_doc}
 %files -n python-%{pkg_name}-doc
 %license LICENSE
 %doc doc/build/html
+%endif
 
 %files -n python%{pyver}-%{pkg_name}-tests
 %{pyver_sitelib}/oslo_reports/tests
