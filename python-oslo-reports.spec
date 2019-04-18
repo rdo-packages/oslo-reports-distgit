@@ -8,7 +8,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-%{pkg_name}
-Version:        1.22.1
+Version:        1.22.2
 Release:        1%{?dist}
 Summary:        Openstack common reports library
 
@@ -196,6 +196,9 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Thu Apr 18 2019 RDO <dev@lists.rdoproject.org> 1.22.2-1
+- Update to 1.22.2
+
 * Tue Nov 21 2017 RDO <dev@lists.rdoproject.org> 1.22.1-1
 - Update to 1.22.1
 
