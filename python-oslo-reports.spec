@@ -135,3 +135,4 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{pyver_sitelib}/oslo_reports/tests
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/oslo.reports/commit/?id=cf35fec00a18cb0bd309266c10cd887354030dce
