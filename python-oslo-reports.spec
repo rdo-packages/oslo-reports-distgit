@@ -75,6 +75,7 @@ Summary:    Documentation for OpenStack common reports library
 
 BuildRequires: python%{pyver}-sphinx
 BuildRequires: python%{pyver}-openstackdocstheme
+BuildRequires: python%{pyver}-sphinxcontrib-apidoc
 
 %description -n python-%{pkg_name}-doc
 Documentation for the oslo.reports library.
