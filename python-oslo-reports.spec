@@ -1,3 +1,5 @@
+%{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
+%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
 %global pypi_name oslo.reports
 %global pkg_name oslo-reports
 
@@ -23,8 +25,18 @@ Summary:        Openstack common reports library
 License:        ASL 2.0
 URL:            http://launchpad.net/oslo
 Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
+# Required for tarball sources verification
+%if 0%{?sources_gpg} == 1
+Source101:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz.asc
+Source102:        https://releases.openstack.org/_static/%{sources_gpg_sign}.txt
+%endif
 
 BuildArch:      noarch
+
+# Required for tarball sources verification
+%if 0%{?sources_gpg} == 1
+BuildRequires:  /usr/bin/gpgv2
+%endif
 
 BuildRequires:  git
 BuildRequires:  openstack-macros
@@ -85,6 +97,10 @@ Requires:  python3-greenlet
 %{common_desc2}
 
 %prep
+# Required for tarball sources verification
+%if 0%{?sources_gpg} == 1
+%{gpgverify}  --keyring=%{SOURCE102} --signature=%{SOURCE101} --data=%{SOURCE0}
+%endif
 %autosetup -n %{pypi_name}-%{upstream_version} -S git
 
 # Let RPM handle the dependencies
