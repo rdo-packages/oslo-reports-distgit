@@ -60,7 +60,7 @@ BuildRequires:  python3-oslo-utils
 BuildRequires:  python3-oslo-serialization
 BuildRequires:  python3-psutil
 
-Requires:       python3-jinja2
+Requires:       python3-jinja2 >= 3.0.0
 Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-oslo-serialization >= 2.18.0
 Requires:       python3-oslo-utils >= 3.33.0
