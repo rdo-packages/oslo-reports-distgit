@@ -19,7 +19,7 @@ Test module for OpenStack common reports library
 
 Name:           python-%{pkg_name}
 Version:        3.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Openstack common reports library
 
 License:        ASL 2.0
@@ -60,7 +60,7 @@ BuildRequires:  python3-oslo-utils
 BuildRequires:  python3-oslo-serialization
 BuildRequires:  python3-psutil
 
-Requires:       python3-jinja2
+Requires:       python3-jinja2 >= 3.0.0
 Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-oslo-serialization >= 2.18.0
 Requires:       python3-oslo-utils >= 3.33.0
@@ -141,6 +141,9 @@ python3 setup.py test || true
 %{python3_sitelib}/oslo_reports/tests
 
 %changelog
+* Mon Feb 19 2024 Tobias Urdin <tobias.urdin@binero.com> 3.0.0-2
+- Fix jinja2 requires
+
 * Tue Mar 07 2023 RDO <dev@lists.rdoproject.org> 3.0.0-1
 - Update to 3.0.0
 
