@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
+%global sources_gpg_sign 0xf8675126e2411e7748dd46662fc2093e4682645f
 %global pypi_name oslo.reports
 %global pkg_name oslo-reports
 
@@ -25,8 +25,8 @@ OpenStack library for creating Guru Meditation Reports and other reports.
 Test module for OpenStack common reports library
 
 Name:           python-%{pkg_name}
-Version:        XXX
-Release:        XXX
+Version:        3.4.0
+Release:        1%{?dist}
 Summary:        Openstack common reports library
 
 License:        Apache-2.0
@@ -144,3 +144,6 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{python3_sitelib}/oslo_reports/tests
 
 %changelog
+* Mon Sep 16 2024 RDO <dev@lists.rdoproject.org> 3.4.0-1
+- Update to 3.4.0
+
