@@ -16,6 +16,23 @@
       "message": "it\u0027s pinned to a commit, let\u0027s wait a little bit to have this commit in the next release",
       "revId": "cbcade905d165c1a58851736ae6d303c72f085b7",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57fd1f32_1383a9de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2024-09-17T13:23:45Z",
+      "side": 1,
+      "message": "recheck",
+      "revId": "cbcade905d165c1a58851736ae6d303c72f085b7",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }
